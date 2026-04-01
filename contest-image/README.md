@@ -13,6 +13,55 @@ tools to create a custom image.
  - Username: `qfcc`
  - Password: `qfcc`
 
+## Language Support
+
+All submissions should be contained in a single file with the `solution` basename.
+The extension that should be used as well as how the solution will be run is in the following table:
+
+| Language | Compiler Version | Extension | Invocation |
+|----------|------------------|-----------|
+| C        |                  | `.c`      | `gcc solution.c &> compile.log && ./a.out &> out.log` |
+| C++      |                  | `.cc`     | `g++ solution.cc &> compile.log && ./a.out &> out.log` |
+| Java     |                  | `.java`   | `javac solution.java &> compile.log && java solution &> out.log` |
+| Python   |                  | `.py`     | `python3 solution.py &> out.log` |
+| Ruby     |                  | `.rb`     | `ruby solution.rb &> out.log` |
+
+If you want to use a language not listed here,
+be sure to contact the contest hosts well before the contest.
+Most text-based languages with CLI support should be admissible.
+
+## Text Editors
+
+The following text editors are present in the image:
+
+ - [Emacs](https://en.wikipedia.org/wiki/Emacs)
+   - A very powerful text editor that can be run in a terminal or GUI window..
+   - One of the two best text editors (debatable, but generally accepted to be one of the best).
+ - [Mousepad](https://en.wikipedia.org/wiki/Mousepad_(software))
+   - A very simple graphical editor.
+   - Similar to:
+     - Gedit (Gnome)
+     - Notepad (Windows)
+     - TextEdit (Mac)
+ - [Nano](https://en.wikipedia.org/wiki/GNU_nano)
+   - A bare bones terminal text editor.
+ - [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor))
+   - A very powerful terminal text editor.
+   - The best text editor (according to Eriq).
+     - Along with Emacs, these editors had withstood the test of time and are generally considered the best.
+   - Note that `gvim` is not available because of dependencies within the image.
+
+### Running Text Editors
+
+This table summarizes some ways you can run each text editor.
+
+| Editor   | Has Desktop Icon | Open Window | Run in Terminal |
+|----------|------------------|-------------|-----------------|
+| Emacs    |        ✅        | `emacs`     | `emacs -nw`     |
+| Mousepad |        ✅        | `mousepad`  |                 |
+| Nano     |                  |             | `nano`          |
+| Vim      |                  |             | `vim`           |
+
 ## Building the Image
 
 We use [Live Build](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html) to build our image,

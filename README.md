@@ -193,32 +193,17 @@ IDEs are generally disallowed.
 Note that only editors with autocomplete based on knowledge of a language's syntax are disallowed.
 Editors that autocomplete based on the tokens in the current file/directory are allowed.
 
-The following text editors are present in the image:
- - [Emacs](https://en.wikipedia.org/wiki/Emacs)
- - [gedit](https://en.wikipedia.org/wiki/Gedit)
- - [GVim](https://en.wikipedia.org/wiki/Vim_(text_editor)#Graphical_user_interface)
- - [Nano](https://en.wikipedia.org/wiki/GNU_nano)
- - [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor))
+The available text editors are listed in the
+[contest image information](contest-image/README.md#text-editors).
 
 If you are new to text editors (e.g., you have only used IDEs),
-then we recommend a simple GUI-based one like gedit.
+then we recommend a simple GUI-based one like Mousepad.
 
 ### Language Support
 
 All submissions should be contained in a single file with the `solution` basename.
-The extension that should be used as well as how the solution will be run is in the following table:
-
-| Language | Extension | Invocation |
-|----------|-----------|------------|
-| C        | `.c`      | `gcc solution.c &> compile.log && ./a.out &> out.log` |
-| C++      | `.cc`     | `g++ solution.cc &> compile.log && ./a.out &> out.log` |
-| Java     | `.java`   | `javac solution.java &> compile.log && java solution &> out.log` |
-| Python   | `.py`     | `python3 solution.py &> out.log` |
-| Ruby     | `.rb`     | `ruby solution.rb &> out.log` |
-
-If you want to use a language not listed here,
-be sure to contact the contest hosts well before the contest.
-Most text-based languages with CLI support should be admissible.
+The supported languages as well as their extensions are listed in the
+[contest image information](contest-image/README.md#language-support).
 
 ## Acknowledgements
 
