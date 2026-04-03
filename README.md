@@ -144,6 +144,7 @@ Below is a non-exclusive list of things you can be disqualified for:
    - We recommend checking-in your phone and setting it to silent.
  - Use of Internet
  - Collaboration with Anyone Else
+ - Using a Non-Approved USB Drive
  - Rebooting Your Machine
    - This will cause your machine to go back to normal.
    - If this accidentally happens, immediately leave your machine and ask a judge for help.

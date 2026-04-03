@@ -1,6 +1,6 @@
 # QFCC Contest Image
 
-This page will cover the details of the image built for competition.
+This page covers the details of the image built for contestants.
 
 ## Overview
 
