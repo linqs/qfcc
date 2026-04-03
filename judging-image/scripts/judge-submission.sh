@@ -83,8 +83,10 @@ function run_test_cases_and_exit() {
 
     local submission_path=$(realpath "${base_dir}/${INPUT_DIRNAME}/"*)
 
-    for oracle_input_path in "${base_dir}/${ORACLE_DIRNAME}/${INPUT_DIRNAME}/"* ; do
-        local test_name=$(basename "${oracle_input_path}" | sed 's/\(.*\)\(\.\w\+\)$/\1/')
+    # for oracle_input_path in "${base_dir}/${ORACLE_DIRNAME}/${INPUT_DIRNAME}/"* ; do
+    for oracle_input_filename in $(ls -1 "${base_dir}/${ORACLE_DIRNAME}/${INPUT_DIRNAME}/" | sort) ; do
+        local test_name=$(basename "${oracle_input_filename}" | sed 's/\(.*\)\(\.\w\+\)$/\1/')
+        local oracle_input_path="${base_dir}/${ORACLE_DIRNAME}/${INPUT_DIRNAME}/${test_name}.txt"
         local oracle_output_path="${base_dir}/${ORACLE_DIRNAME}/${OUTPUT_DIRNAME}/${test_name}.txt"
 
         local output_path="${base_dir}/${OUTPUT_DIRNAME}/${test_name}.txt"

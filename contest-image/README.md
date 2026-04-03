@@ -19,7 +19,7 @@ All submissions should be contained in a single file with the `solution` basenam
 The extension that should be used as well as how the solution will be run is in the following table:
 
 | Language | Compiler Version | Extension | Invocation |
-|----------|------------------|-----------|
+|----------|------------------|-----------|------------|
 | C        |                  | `.c`      | `gcc solution.c &> compile.log && ./a.out &> out.log` |
 | C++      |                  | `.cc`     | `g++ solution.cc &> compile.log && ./a.out &> out.log` |
 | Java     |                  | `.java`   | `javac solution.java &> compile.log && java solution &> out.log` |
