@@ -86,6 +86,7 @@ Below is the general outline for how a contestant takes part in a competition.
 
    - Once you think you have a working solution, copy your solution to the provided USB stick and place it in the judging queue.
      - Your file should be named [according to the language you are using](#language-support).
+     - Your submission file should be the ONLY THING on the USB drive.
    - You may submit as many times as you want.
 
 7 -- Await Judging

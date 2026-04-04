@@ -9,6 +9,57 @@ Submissions, input, and outputs will be mounted (read-only) to the Docker contai
 
 A live image is provided so judges can optionally minimize the exposure of their host machine.
 
+## Judging Code
+
+This section details the various pieces of code used in the judging process.
+
+### Docker Image
+
+All contestant code should be compiled and run from inside the provided Docker container.
+This provides a sandboxed and consistent place for scoring.
+
+To build the image, use:
+```sh
+docker build -t qfcc-judge .
+```
+
+To run the image, we recommend using the provided script:
+```sh
+./scripts/run-docker-judge.sh <path to contestant submission directory> <path to oracle directory>
+```
+
+This script will properly set up the required directory structure for judging.
+
+### Judging Script
+
+The core script that does the judging is [scripts/judge-submission.sh](scripts/judge-submission.sh).
+This is the script called by the judging Docker image.
+This script expects a single directory laid out as follows:
+
+```
+<provided base dir>
+├── input
+│   └── submission.<extension>
+├── output
+└── oracle
+    ├── input
+    │   ├── 001-single-line.txt
+    │   ├── 002-multiple-lines.txt
+    │   ├── 003-empty-lines.txt
+    │   └── 004-no-input.txt
+    └── output
+        ├── 001-single-line.txt
+        ├── 002-multiple-lines.txt
+        ├── 003-empty-lines.txt
+        └── 004-no-input.txt
+```
+
+Definitions:
+ - `input` -- Where contestant files should be located (e.g., all files from a contestant's USB can be copied here).
+ - `output` -- Where judging output will be places, should generally be empty before judging.
+ - `oracle/input` -- Where the input (stdin) for test cases is located.
+ - `oracle/output` -- Where the output (stdout) for test cases is located, file names should match `oracle/input`.
+
 ## Judging Procedure
 
  - (Optional) Boot into the judging image.
