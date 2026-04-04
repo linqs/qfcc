@@ -13,7 +13,7 @@ __pycache__/
 # Common Temp Dirents
 old/
 temp/
-out*/
+out/
 /test-*
 test/
 /test*.*
