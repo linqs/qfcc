@@ -1,0 +1,17 @@
+name: Main
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Judging Submissions
+        shell: bash
+        run: ./judging-image/scripts/check-test-submissions-docker.sh

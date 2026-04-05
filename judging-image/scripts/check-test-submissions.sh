@@ -36,7 +36,7 @@ function main() {
             cp "${submission_dir}/"* "${TESTING_DIR}/input/"
             rm "${TESTING_DIR}/input/expected.txt"
 
-            # Run Judgeing Script
+            # Run Judging Script
             "${JUDGE_SCRIPT}" "${TESTING_DIR}" > "${ACTUAL_OUTPUT_PATH}"
 
             # Compare Output Against Expected

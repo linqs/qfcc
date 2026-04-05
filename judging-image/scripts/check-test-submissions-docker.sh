@@ -50,7 +50,7 @@ function main() {
             local expected_output_path="${TEST_PROBLEMS_DIR}/${problem_name}/submissions/${submission_name}/expected.txt"
             local actual_output_path="${submission_dir}/output.txt"
 
-            # Run Judgeing Docker Script
+            # Run Judging Docker Script
             "${DOCKER_JUDGE_SCRIPT}" "${submission_dir}" "${test_problem_dir}/oracle"
 
             # Compare Output Against Expected
