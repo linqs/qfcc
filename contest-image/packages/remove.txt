@@ -1,4 +1,9 @@
 apparmor
 cron
+dselect
+info
+man-db
+manpages
 mariadb-common
 mysql-common
+wget

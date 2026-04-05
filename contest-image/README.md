@@ -18,13 +18,13 @@ tools to create a custom image.
 All submissions should be contained in a single file with the `solution` basename.
 The extension that should be used as well as how the solution will be run is in the following table:
 
-| Language | Compiler Version | Extension | Invocation |
-|----------|------------------|-----------|------------|
-| C        |                  | `.c`      | `gcc solution.c &> compile.log && ./a.out &> out.log` |
-| C++      |                  | `.cc`     | `g++ solution.cc &> compile.log && ./a.out &> out.log` |
-| Java     |                  | `.java`   | `javac solution.java &> compile.log && java solution &> out.log` |
-| Python   |                  | `.py`     | `python3 solution.py &> out.log` |
-| Ruby     |                  | `.rb`     | `ruby solution.rb &> out.log` |
+| Language | Version              | Extension | Compilation           | Invocation            |
+|----------|----------------------|-----------|-----------------------|-----------------------|
+| C        | gcc 12.2.0           | `.c`      | `gcc solution.c`      | `./a.out`             |
+| C++      | g++ 12.2.0           | `.cc`     | `g++ solution.cc`     | `./a.out`             |
+| Java     | OpenJDK 17.0.18      | `.java`   | `javac solution.java` | `java solution`       |
+| Python   | CPython 3.11.2       | `.py`     |                       | `python3 solution.py` |
+| Ruby     | ruby (YARV) 3.1.2p20 | `.rb`     |                       | `ruby solution.rb`    |
 
 If you want to use a language not listed here,
 be sure to contact the contest hosts well before the contest.
@@ -90,4 +90,4 @@ qemu-system-x86_64 --enable-kvm -cpu host -boot d -m 8G -cdrom ./build/build.amd
 
 ## Packages
 
-The packages the image uses live in the [package](./package) directory.
+The packages the image uses live in the [packages](./packages) directory.
