@@ -6,7 +6,7 @@ readonly ORACLE_DIRNAME='oracle'
 
 readonly SUBMISSION_BASENAME='solution'
 
-readonly ALLOWED_EXTENSIONS=".py"
+readonly ALLOWED_EXTENSIONS=".c .py"
 
 readonly OUTPUT_DIFF_PATH='/tmp/qfcc-output.diff'
 
@@ -131,11 +131,19 @@ function run_submission() {
 
     local submission_extension=$(basename "${submission_path}" | sed 's/\(.*\)\(\.\w\+\)$/\2/')
 
-    if [[ "${submission_extension}" == '.py' ]] ; then
+    if [[ "${submission_extension}" == '.c' ]] ; then
+        gcc "${submission_path}" &> "${compile_output_path}"
+        if [[ $? -ne 0 ]] ; then
+            echo "C compile failed."
+            exit 109
+        fi
+
+        ./a.out < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.py' ]] ; then
         python3 "${submission_path}" < "${input_path}" &> "${output_path}"
     else
         echo "Unknown submission extension: '${submission_extension}'."
-        exit 109
+        exit 199
     fi
 }
 
