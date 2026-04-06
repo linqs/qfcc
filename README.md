@@ -19,13 +19,21 @@ Dr. James Bowring's [A New Paradigm for Programming Competitions](https://dl.acm
 The information in this document applies to this variation of the contest.
 Specific events may vary their rules.
 
+**Quick Links:**
+ - [Contest Overview](#contest-overview)
+ - [Contest Procedure](#contest-procedure)
+ - [Available Text Editors](contest-image/README.md#text-editors)
+ - [Language Support](contest-image/README.md#language-support)
+ - [Hints for Contestants](contest-image/hints.md)
+ - [Developer Notes](./development.md)
+
 ## Repository
 
 This repository provides instructions, tools, and materials for running a QFCC.
 All material is licensed under the [MIT License](LICENSE).
 This license does not extend to graphical artifacts (e.g., images) in this repository.
 
-## Overview
+## Contest Overview
 
 In this contest, contestants must create a program to solve a given problem specification.
 Contestants are ranked first by the number of attempts they take to produce a correct solution,
