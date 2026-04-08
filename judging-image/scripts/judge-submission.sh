@@ -6,9 +6,11 @@ readonly ORACLE_DIRNAME='oracle'
 
 readonly SUBMISSION_BASENAME='solution'
 
-readonly ALLOWED_EXTENSIONS=".c .cc .py"
+readonly ALLOWED_EXTENSIONS=".c .cc .java .py"
 
-readonly OUTPUT_DIFF_PATH='/tmp/qfcc-output.diff'
+readonly TEMP_DIR='/tmp/qfcc'
+readonly OUTPUT_DIFF_PATH="${TEMP_DIR}/output.diff"
+readonly CLASSPATH_DIR="${TEMP_DIR}/java-classes"
 
 # Check the structure of the base directory.
 function check_contents() {
@@ -129,6 +131,7 @@ function run_submission() {
     local output_path=$3
     local compile_output_path=$4
 
+    local submission_basename=$(basename "${submission_path}" | sed 's/\(.*\)\(\.\w\+\)$/\1/')
     local submission_extension=$(basename "${submission_path}" | sed 's/\(.*\)\(\.\w\+\)$/\2/')
 
     if [[ "${submission_extension}" == '.c' ]] ; then
@@ -147,6 +150,16 @@ function run_submission() {
         fi
 
         ./a.out < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.java' ]] ; then
+        mkdir -p "${CLASSPATH_DIR}"
+
+        javac -d "${CLASSPATH_DIR}" "${submission_path}" &> "${compile_output_path}"
+        if [[ $? -ne 0 ]] ; then
+            echo "Java compile failed."
+            exit 111
+        fi
+
+        java -cp "${CLASSPATH_DIR}" "${submission_basename}" < "${input_path}" &> "${output_path}"
     elif [[ "${submission_extension}" == '.py' ]] ; then
         python3 "${submission_path}" < "${input_path}" &> "${output_path}"
     else
@@ -164,6 +177,9 @@ function main() {
     trap exit SIGINT
 
     local base_dir=$1
+
+    rm -rf "${TEMP_DIR}"
+    mkdir -p "${TEMP_DIR}"
 
     check_contents "${base_dir}"
 

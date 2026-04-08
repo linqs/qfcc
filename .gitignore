@@ -9,6 +9,8 @@ node_modules/
 venv/
 *.pyc
 __pycache__/
+a.out
+*.class
 
 # Common Temp Dirents
 old/

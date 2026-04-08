@@ -37,6 +37,28 @@ for (std::string line; std::getline(std::cin, line); ) {
 }
 ```
 
+### Java
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+while (true) {
+    String line = null;
+    try {
+        line = reader.readLine();
+    } catch (IOException ex) {
+        break;
+    }
+
+    if (line == null) {
+        break;
+    }
+}
+```
+
 ### Python
 
 ```python
