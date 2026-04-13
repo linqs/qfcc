@@ -15,6 +15,7 @@ WORKDIR /work
 RUN \
     apt update \
     && apt install -y \
+        tree \
         vim \
         live-build \
     && apt clean \
@@ -34,8 +35,10 @@ RUN \
     && cd /build \
     && codename=$(cat /etc/os-release | grep VERSION_CODENAME | sed 's/^.*=//') \
     && lb config \
+        --binary-images iso-hybrid \
         --distribution ${codename} \
-        --bootappend-live "timezone=${TIMEZONE} boot=live components username=qfcc" \
+        --archive-areas "main contrib non-free non-free-firmware" \
+        --bootappend-live "boot=live toram timezone=${TIMEZONE} components hostname=qfcc username=qfcc" \
         --cache false --cache-indices false --cache-packages false --cache-stages false
 
 # Copy the main work directory so scripts can reference it.
@@ -75,6 +78,7 @@ RUN \
     && cp -r /usr/share/live/build/bootloaders/syslinux_common /build/config/bootloaders/ \
     && rm /build/config/bootloaders/syslinux_common/splash.svg \
     && cp /work/data/images/linqs-slug-text-boot.png /build/config/bootloaders/syslinux_common/splash.png \
+    && cp /work/data/images/linqs-slug-text-boot-800x600.png /build/config/bootloaders/syslinux_common/splash800x600.png \
     && sed -i "s/timeout 0/timeout ${BOOT_MENU_TIMEOUT}/" \
         /build/config/bootloaders/syslinux/syslinux.cfg \
         /build/config/bootloaders/isolinux/isolinux.cfg \
