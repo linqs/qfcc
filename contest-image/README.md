@@ -88,6 +88,26 @@ To test it without needing a USB or another machine, you can use [QEMU](https://
 qemu-system-x86_64 --enable-kvm -cpu host -boot d -m 8G -cdrom ./build/build.amd64.iso
 ```
 
+## Writing the Image
+
+**All existing data on this USB stick will be lost.**
+
+First plug in your USB stick (or whatever block device you want to write to).
+Identify which block device your USB has been assigned, we will use `/dev/sdX` in this document.
+We want to **disk**, not **partition**, so the block device will generally end in a letter, not number.
+
+This document does not cover the details of identifying your block device, but here is a general procedure you can use:
+ 1. Unplug the USB (if plugged in).
+ 2. Run `lsblk -o NAME,TRAN`.
+ 3. Plug in the USB and wait five seconds.
+ 4. Run `lsblk -o NAME,TRAN`.
+ 5. Look at the difference between the two.
+
+To copy the image (at `./build/build.amd64.iso`) to the USB (at `/dev/sdX`), use:
+```sh
+sudo dd if=./build/build.amd64.iso of=/dev/sdX conv=fsync bs=4M status=progress
+```
+
 ## Packages
 
 The packages the image uses live in the [packages](./packages) directory.
