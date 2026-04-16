@@ -24,7 +24,7 @@ Specific events may vary their rules.
  - [Contest Procedure](#contest-procedure)
  - [Available Text Editors](contest-image/README.md#text-editors)
  - [Language Support](contest-image/README.md#language-support)
- - [Hints for Contestants](contest-image/hints.md)
+ - [Hints for Contestants](contest-image/HINTS.md)
  - [Developer Notes](./development.md)
 
 ## Repository

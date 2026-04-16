@@ -5,19 +5,32 @@
 readonly BASE_DIR='/opt/qfcc'
 readonly DATA_DIR="${BASE_DIR}/data"
 readonly SHORTCUTS_DIR="${DATA_DIR}/shortcuts"
+readonly SEED_PATH="${DATA_DIR}/SEED"
 readonly FORCE_REMOVE_PACKAGES_PATH="${DATA_DIR}/remove-force.txt"
 
 function setup_users() {
     echo "Setting Up Users"
 
+    # Root Password
+    echo "root:$(cat "${SEED_PATH}")" | chpasswd
+
+    # User Password
     echo 'qfcc:qfcc' | chpasswd
-}
 
-function setup_desktop() {
-    echo "Setting up Desktop"
+    # User Groups
+    deluser qfcc sudo
+    deluser qfcc netdev
+    deluser qfcc dip
+    rm -f /etc/sudoers.d/live
 
+    # Desktop Shortcuts
     chown -R qfcc:qfcc /home/qfcc/Desktop
     echo 'XDG_DATA_DIRS=/usr/share/xfce4:/usr/local/share/:/usr/share/:/usr/share:/home/qfcc/Desktop' >> /etc/environment
+
+    # Mime Config
+    mkdir -p /home/qfcc/.config
+    cp "${DATA_DIR}/config/mimeapps.list" /home/qfcc/.config/
+    chown -R qfcc:qfcc /home/qfcc/.config
 }
 
 function remove_files() {
@@ -26,7 +39,8 @@ function remove_files() {
         /usr/share/doc/* \
         /usr/share/gcc \
         /usr/share/gdb \
-        /usr/share/vim/vim90/macros/maze/*
+        /usr/share/vim/vim90/macros/maze/* \
+        "${BASE_DIR}"
 }
 
 # For these packages, we will remove them only and not their dependencies.
@@ -35,6 +49,12 @@ function force_remove_packages() {
 
     cat "${FORCE_REMOVE_PACKAGES_PATH}" | xargs dpkg --remove --force-depends --force-remove-essential | true
     cat "${FORCE_REMOVE_PACKAGES_PATH}" | xargs dpkg --purge --force-depends --force-remove-essential | true
+}
+
+function down_network() {
+    for dev in $(ls /sys/class/net) ; do
+        ip link set "${dev}" down
+    done
 }
 
 function unmount_live_disks() {
@@ -56,14 +76,14 @@ function main() {
     # Setup Users
     setup_users
 
-    # Setup Desktop
-    setup_desktop
-
     # Force Remove Packages
     force_remove_packages
 
     # Remove Files
     remove_files
+
+    # Down Network
+    down_network
 
     # Unmount Live Disks
     unmount_live_disks

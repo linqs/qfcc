@@ -79,6 +79,12 @@ To build the actual image/ISO:
 docker run --rm --privileged -v ./build:/out qfcc-image-builder
 ```
 
+Note that the seed will be output during this step, which is used as the root password.
+In the build output, you will see something like:
+```sh
+Seed: 400011907
+```
+
 ## Testing the Image
 
 The most straightforward way to test the image would be to burn it to a USB and run it.

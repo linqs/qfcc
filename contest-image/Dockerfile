@@ -27,7 +27,13 @@ RUN mkdir /work/user
 COPY ./packages /work/packages
 COPY ./scripts /work/scripts
 COPY ./data /work/data
-COPY ./README.md /work/data/image-info.md
+COPY ./README.md /work/data/text/SYSTEM-INFO.md
+COPY ./HINTS.md /work/data/text/HINTS.md
+
+# Create a seed that can be used for things like passwords.
+RUN \
+    shuf -i 1-1000000000 -n 1 > /work/data/SEED \
+    && echo "Seed: $(cat /work/data/SEED)"
 
 # Base Configure
 RUN \
@@ -67,7 +73,7 @@ RUN \
 # Shortcuts
 RUN \
     mkdir -p /build/config/includes.chroot/etc/skel/Desktop \
-    && cp -r /work/data/image-info.md /build/config/includes.chroot/etc/skel/Desktop/ \
+    && cp -r /work/data/text/* /build/config/includes.chroot/etc/skel/Desktop/ \
     && cp -r /work/data/shortcuts/* /build/config/includes.chroot/etc/skel/Desktop/
 
 # Bootloader
