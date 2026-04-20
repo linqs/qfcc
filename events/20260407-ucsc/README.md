@@ -5,13 +5,13 @@ April 27, 2026
 E2-180
 
 <div align="center">
-    <img alt='LINQS Lab' src='../images/linqs-logo.png' width='40%'>
-    <img alt="UCSC's Open Source Programs Office (OSPO)" src='../images/ospo-logo.png' width='40%'>
+    <img alt='LINQS Lab' src='images/linqs-logo.png' width='40%'>
+    <img alt="UCSC's Open Source Programs Office (OSPO)" src='images/ospo-logo.png' width='40%'>
 </div>
 
 The [LINQS lab](https://linqs.org) and [UCSC's Open Source Programs Office (OSPO)](https://ucsc-ospo.github.io/)
 are hosting a "qualify first" coding contest.
-See this repo's [README](../README.md) for more details about this type of contest and the resources used.
+See this repo's [README](../../README.md) for more details about this type of contest and the resources used.
 
 If you want to compete,
 please fill out this [Google Form](https://forms.gle/dKaDrpeZJtGjhMJM6).
@@ -28,7 +28,7 @@ we look at **your number of compiles/runs** instead.\*
 The contestant that uses the least number of compiles/runs to produce passing code is the winner.
 Ties are broken by time.
 
-You may use any [supported programming language](../contest-image/README.md#language-support).
+You may use any [supported programming language](../../contest-image/README.md#language-support).
 You may switch the language you are using at any time.
 If you want to use a language that is not supported,
 talk to your judges as early as you can.
@@ -93,7 +93,7 @@ Things that will be provided:
  - Paper
  - Food
 
-For a more detailed look at the contest procedures, see this repo's [README](../README.md#contest-procedure).
+For a more detailed look at the contest procedures, see this repo's [README](../../README.md#contest-procedure).
 
 ## Why?
 
