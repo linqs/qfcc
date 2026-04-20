@@ -1,0 +1,4 @@
+ZZZZ	1	ZZZ
+ZZZ	2	ZZ
+ZZ	3	Z
+Z	4	A

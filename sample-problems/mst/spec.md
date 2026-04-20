@@ -77,6 +77,8 @@ For example, the line `A\t10\tB` indicates that node A is connected to node B vi
      - "Whitespace" will be considered any ASCII whitespace (see the table below).
      - A "non-empty" string is a string that contains any character and does not include any terminating null byte.
      - A non-empty line will always have a full edge on it.
+     - There will be no **extra** whitespace between the two nodes on a line,
+       i.e., the tab delimiters will be there but nothing else will separate the nodes from the edge weight.
    - Nodes
      - Node IDs will be uppercase alphabetic (US English) letters.
        - These characters fall in the range of ASCII characters from 65 (`A`) to 90 (`Z`) (inclusive).
@@ -93,6 +95,7 @@ For example, the line `A\t10\tB` indicates that node A is connected to node B vi
    - The output should only consist of a single line (which (by definition) must end with a newline character).
  - Graphs
    - Edges will connect exactly two nodes.
+     - Edges will not connect a node to itself.
    - A graph will be limited to at most:
      - 128 Nodes
      - 1024 Edges
