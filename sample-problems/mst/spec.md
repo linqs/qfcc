@@ -44,6 +44,7 @@ We can refer to the sum of all edge weights in an MST the MST's "cost" or "weigh
 ## Details
 
 Your program should:
+
  - Read in the graph on stdin.
    - See the [Input Format section](#input-format) for details.
  - Compute a Minimum Spanning Tree (MST) for the given undirected graph.
@@ -58,6 +59,7 @@ Ignore any lines that are empty or include only whitespace.
 An EOF (end of file), will signal that there are no more edges to read.
 
 Each line containing an edge will have three values (in order) separated by a tab character (`\t`):
+
  - A node identifier.
  - An edge weight.
  - A node identifier.
