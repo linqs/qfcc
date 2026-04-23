@@ -69,9 +69,11 @@ which requires a Debian install.
 To make it easy for anyone to build,
 we use [Docker](https://en.wikipedia.org/wiki/Docker_(software)) to create a Debian container which can then build our contest image.
 
+Note that we need to use the repository root as the Docker build context,
+since we need to copy files outside of this directory.
 To build the image builder image:
 ```sh
-docker build -t qfcc-image-builder .
+$(cd .. && docker build -t qfcc-image-builder -f contest-image/Dockerfile .)
 ```
 
 To build the actual image/ISO:

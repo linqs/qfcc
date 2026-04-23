@@ -5,14 +5,15 @@
 readonly BASE_DIR='/opt/qfcc'
 readonly DATA_DIR="${BASE_DIR}/data"
 readonly SHORTCUTS_DIR="${DATA_DIR}/shortcuts"
-readonly SEED_PATH="${DATA_DIR}/SEED"
+readonly ROOT_PASSWORD_PATH="${DATA_DIR}/ROOT_PASSWORD"
 readonly FORCE_REMOVE_PACKAGES_PATH="${DATA_DIR}/remove-force.txt"
 
 function setup_users() {
     echo "Setting Up Users"
 
     # Root Password
-    echo "root:$(cat "${SEED_PATH}")" | chpasswd
+    echo "root:$(cat "${ROOT_PASSWORD_PATH}")" | chpasswd
+    rm "${ROOT_PASSWORD_PATH}"
 
     # User Password
     echo 'qfcc:qfcc' | chpasswd
