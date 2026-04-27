@@ -88,6 +88,13 @@ reader.once('close', function() {
 });
 ```
 
+### Perl
+
+```pl
+foreach my $line (<STDIN>) {
+}
+```
+
 ### Python
 
 ```python

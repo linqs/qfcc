@@ -25,6 +25,7 @@ The extension that should be used as well as how the solution will be run is in 
 | C++        | g++ 12.2.0           | `.cc`     | `g++ solution.cc`          | `./a.out`              |
 | Java       | OpenJDK 17.0.18      | `.java`   | `javac solution.java`      | `java solution`        |
 | Javascript | node v18.20.4        | `.js`     |                            | `node solution.js`     |
+| Perl       | GNU Perl v5.36.0     | `.pl`     |                            | `perl solution.py`     |
 | Python     | CPython 3.11.2       | `.py`     |                            | `python3 solution.py`  |
 | Ruby       | ruby (YARV) 3.1.2p20 | `.rb`     |                            | `ruby solution.rb`     |
 
