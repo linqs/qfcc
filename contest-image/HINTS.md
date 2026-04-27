@@ -95,6 +95,18 @@ foreach my $line (<STDIN>) {
 }
 ```
 
+### PHP
+
+```php
+<?php
+
+while ($line = fgets(STDIN)) {
+}
+
+?>
+
+```
+
 ### Python
 
 ```python

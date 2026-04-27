@@ -26,6 +26,7 @@ The extension that should be used as well as how the solution will be run is in 
 | Java       | OpenJDK 17.0.18      | `.java`   | `javac solution.java`      | `java solution`        |
 | Javascript | node v18.20.4        | `.js`     |                            | `node solution.js`     |
 | Perl       | GNU Perl v5.36.0     | `.pl`     |                            | `perl solution.py`     |
+| PHP        | PHP 8.2.30 (Zend)    | `.php`    |                            | `php solution.php`     |
 | Python     | CPython 3.11.2       | `.py`     |                            | `python3 solution.py`  |
 | Ruby       | ruby (YARV) 3.1.2p20 | `.rb`     |                            | `ruby solution.rb`     |
 
