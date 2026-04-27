@@ -6,7 +6,7 @@ readonly ORACLE_DIRNAME='oracle'
 
 readonly SUBMISSION_BASENAME='solution'
 
-readonly ALLOWED_EXTENSIONS=".c .cc .java .py .rb"
+readonly ALLOWED_EXTENSIONS=".c .cc .cs .go .java .js .php .pl .py .rb .rs"
 
 readonly TEMP_DIR='/tmp/qfcc'
 readonly OUTPUT_DIFF_PATH="${TEMP_DIR}/output.diff"
@@ -150,20 +150,50 @@ function run_submission() {
         fi
 
         ./a.out < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.cs' ]] ; then
+        dotnet build --artifacts-path . "${submission_path}" &> "${compile_output_path}"
+        if [[ $? -ne 0 ]] ; then
+            echo "C# compile failed."
+            exit 111
+        fi
+
+        ./bin/debug/solution < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.go' ]] ; then
+        go build "${submission_path}" &> "${compile_output_path}"
+        if [[ $? -ne 0 ]] ; then
+            echo "Go compile failed."
+            exit 112
+        fi
+
+        "./${SUBMISSION_BASENAME}" < "${input_path}" &> "${output_path}"
     elif [[ "${submission_extension}" == '.java' ]] ; then
         mkdir -p "${CLASSPATH_DIR}"
 
         javac -d "${CLASSPATH_DIR}" "${submission_path}" &> "${compile_output_path}"
         if [[ $? -ne 0 ]] ; then
             echo "Java compile failed."
-            exit 111
+            exit 113
         fi
 
         java -cp "${CLASSPATH_DIR}" "${submission_basename}" < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.js' ]] ; then
+        node "${submission_path}" < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.php' ]] ; then
+        php "${submission_path}" < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.pl' ]] ; then
+        perl "${submission_path}" < "${input_path}" &> "${output_path}"
     elif [[ "${submission_extension}" == '.py' ]] ; then
         python3 "${submission_path}" < "${input_path}" &> "${output_path}"
     elif [[ "${submission_extension}" == '.rb' ]] ; then
         ruby "${submission_path}" < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.rs' ]] ; then
+        rustc "${submission_path}" &> "${compile_output_path}"
+        if [[ $? -ne 0 ]] ; then
+            echo "Rust compile failed."
+            exit 114
+        fi
+
+        "./${SUBMISSION_BASENAME}" < "${input_path}" &> "${output_path}"
     else
         echo "Unknown submission extension: '${submission_extension}'."
         exit 199

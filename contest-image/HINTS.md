@@ -32,6 +32,17 @@ while (1) {
 }
 ```
 
+### C#
+
+```c#
+while (true) {
+    String line = Console.ReadLine();
+    if (line == null) {
+        break;
+    }
+}
+```
+
 ### C++
 
 ```c++
@@ -39,6 +50,24 @@ while (1) {
 #include <string>
 
 for (std::string line; std::getline(std::cin, line); ) {
+}
+```
+
+### Go
+
+```go
+package main
+
+import (
+	"bufio"
+	"os"
+)
+
+func main() {
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		line := scanner.Text()
+	}
 }
 ```
 
@@ -64,6 +93,43 @@ while (true) {
 }
 ```
 
+### Javascript
+
+```js
+const readline = require('readline');
+
+const reader = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+});
+
+reader.on('line', function(line) {
+});
+
+reader.once('close', function() {
+});
+```
+
+### Perl
+
+```pl
+foreach my $line (<STDIN>) {
+}
+```
+
+### PHP
+
+```php
+<?php
+
+while ($line = fgets(STDIN)) {
+}
+
+?>
+
+```
+
 ### Python
 
 ```python
@@ -78,4 +144,17 @@ for line in sys.stdin:
 ```ruby
 $stdin.each_line do |line|
 end
+```
+
+### Rust
+
+```rs
+use std::io::{self, BufRead};
+
+fn main() {
+    let stdin = io::stdin();
+    for result in stdin.lock().lines() {
+        let line = result.unwrap().trim().to_string();
+    }
+}
 ```

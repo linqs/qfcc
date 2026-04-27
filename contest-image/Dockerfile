@@ -5,6 +5,8 @@ ARG TIMEZONE="America/Los_Angeles"
 ARG BOOT_MENU_TIMEOUT="30"
 ARG BOOT_MENU_TITLE="Quality First Coding Competition"
 
+ARG ROOT_PW="qfcc"
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
@@ -24,16 +26,18 @@ RUN \
 RUN mkdir /work/user
 
 # Copy Image Information
-COPY ./packages /work/packages
-COPY ./scripts /work/scripts
-COPY ./data /work/data
-COPY ./README.md /work/data/text/SYSTEM-INFO.md
-COPY ./HINTS.md /work/data/text/HINTS.md
+COPY ./contest-image/packages /work/packages
+COPY ./contest-image/scripts /work/scripts
+COPY ./contest-image/data /work/data
+COPY ./contest-image/README.md /work/data/text/SYSTEM-INFO.md
+COPY ./contest-image/HINTS.md /work/data/text/HINTS.md
+COPY ./README.md /work/data/text/README.md
 
-# Create a seed that can be used for things like passwords.
+# Note the root password.
 RUN \
-    shuf -i 1-1000000000 -n 1 > /work/data/SEED \
-    && echo "Seed: $(cat /work/data/SEED)"
+    echo "${ROOT_PW}" > /work/data/ROOT_PASSWORD \
+    && chmod 600 /work/data/ROOT_PASSWORD \
+    && echo "Root Password: $(cat /work/data/ROOT_PASSWORD)"
 
 # Base Configure
 RUN \
@@ -75,6 +79,13 @@ RUN \
     mkdir -p /build/config/includes.chroot/etc/skel/Desktop \
     && cp -r /work/data/text/* /build/config/includes.chroot/etc/skel/Desktop/ \
     && cp -r /work/data/shortcuts/* /build/config/includes.chroot/etc/skel/Desktop/
+
+# X11 Config (Screensaver)
+RUN \
+    mkdir -p /build/config/includes.chroot/etc/X11 \
+    && cp -r /work/data/config/xorg.conf.d /build/config/includes.chroot/etc/X11/ \
+    && chmod 755 /build/config/includes.chroot/etc/X11/xorg.conf.d \
+    && chmod 644 /build/config/includes.chroot/etc/X11/xorg.conf.d/*
 
 # Bootloader
 RUN \

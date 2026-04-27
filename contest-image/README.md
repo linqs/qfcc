@@ -18,13 +18,19 @@ tools to create a custom image.
 All submissions should be contained in a single file with the `solution` basename.
 The extension that should be used as well as how the solution will be run is in the following table:
 
-| Language | Version              | Extension | Compilation           | Invocation            |
-|----------|----------------------|-----------|-----------------------|-----------------------|
-| C        | gcc 12.2.0           | `.c`      | `gcc solution.c`      | `./a.out`             |
-| C++      | g++ 12.2.0           | `.cc`     | `g++ solution.cc`     | `./a.out`             |
-| Java     | OpenJDK 17.0.18      | `.java`   | `javac solution.java` | `java solution`       |
-| Python   | CPython 3.11.2       | `.py`     |                       | `python3 solution.py` |
-| Ruby     | ruby (YARV) 3.1.2p20 | `.rb`     |                       | `ruby solution.rb`    |
+| Language   | Version              | Extension | Compilation                | Invocation             |
+|------------|----------------------|-----------|----------------------------|------------------------|
+| C          | gcc 12.2.0           | `.c`      | `gcc solution.c`           | `./a.out`              |
+| C#         | dotnet 10.0.203      | `.cs`     | `dotnet build solution.cs` | `./bin/debug/solution` |
+| C++        | g++ 12.2.0           | `.cc`     | `g++ solution.cc`          | `./a.out`              |
+| Go         | go 1.19.8            | `.go`     | `go build solution.go`     | `./solution`           |
+| Java       | OpenJDK 17.0.18      | `.java`   | `javac solution.java`      | `java solution`        |
+| Javascript | node v18.20.4        | `.js`     |                            | `node solution.js`     |
+| Perl       | GNU Perl v5.36.0     | `.pl`     |                            | `perl solution.py`     |
+| PHP        | PHP 8.2.30 (Zend)    | `.php`    |                            | `php solution.php`     |
+| Python     | CPython 3.11.2       | `.py`     |                            | `python3 solution.py`  |
+| Ruby       | ruby (YARV) 3.1.2p20 | `.rb`     |                            | `ruby solution.rb`     |
+| Rust       | rustc 1.63.0         | `.rs`     | `rustc solution.rs`        | `./solution`           |
 
 If you want to use a language not listed here,
 be sure to contact the contest hosts well before the contest.
@@ -69,9 +75,11 @@ which requires a Debian install.
 To make it easy for anyone to build,
 we use [Docker](https://en.wikipedia.org/wiki/Docker_(software)) to create a Debian container which can then build our contest image.
 
+Note that we need to use the repository root as the Docker build context,
+since we need to copy files outside of this directory.
 To build the image builder image:
 ```sh
-docker build -t qfcc-image-builder .
+$(cd .. && docker build -t qfcc-image-builder -f contest-image/Dockerfile .)
 ```
 
 To build the actual image/ISO:

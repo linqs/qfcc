@@ -11,13 +11,24 @@ WORKDIR /work
 RUN \
     ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 
-# Install Packages
-
 COPY ./packages /work/packages
 
+# Install Base Packages
 RUN \
     apt update \
     && cat /work/packages/base.list | xargs apt install --yes \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add Microsoft repo.
+RUN \
+    wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb \
+    && rm packages-microsoft-prod.deb
+
+# Install Languages
+RUN \
+    apt update \
     && cat /work/packages/languages.list | xargs apt install --yes \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
