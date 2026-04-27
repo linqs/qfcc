@@ -122,3 +122,16 @@ for line in sys.stdin:
 $stdin.each_line do |line|
 end
 ```
+
+### Rust
+
+```rs
+use std::io::{self, BufRead};
+
+fn main() {
+    let stdin = io::stdin();
+    for result in stdin.lock().lines() {
+        let line = result.unwrap().trim().to_string();
+    }
+}
+```

@@ -6,7 +6,7 @@ readonly ORACLE_DIRNAME='oracle'
 
 readonly SUBMISSION_BASENAME='solution'
 
-readonly ALLOWED_EXTENSIONS=".c .cc .cs .java .js .php .pl .py .rb"
+readonly ALLOWED_EXTENSIONS=".c .cc .cs .java .js .php .pl .py .rb .rs"
 
 readonly TEMP_DIR='/tmp/qfcc'
 readonly OUTPUT_DIFF_PATH="${TEMP_DIR}/output.diff"
@@ -178,6 +178,14 @@ function run_submission() {
         python3 "${submission_path}" < "${input_path}" &> "${output_path}"
     elif [[ "${submission_extension}" == '.rb' ]] ; then
         ruby "${submission_path}" < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.rs' ]] ; then
+        rustc "${submission_path}" &> "${compile_output_path}"
+        if [[ $? -ne 0 ]] ; then
+            echo "Rust compile failed."
+            exit 113
+        fi
+
+        "./${SUBMISSION_BASENAME}" < "${input_path}" &> "${output_path}"
     else
         echo "Unknown submission extension: '${submission_extension}'."
         exit 199
