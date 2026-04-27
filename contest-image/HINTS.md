@@ -27,6 +27,17 @@ while (1) {
 }
 ```
 
+### C#
+
+```c#
+while (true) {
+    String line = Console.ReadLine();
+    if (line == null) {
+        break;
+    }
+}
+```
+
 ### C++
 
 ```c++

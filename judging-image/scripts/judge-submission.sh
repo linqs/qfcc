@@ -6,7 +6,7 @@ readonly ORACLE_DIRNAME='oracle'
 
 readonly SUBMISSION_BASENAME='solution'
 
-readonly ALLOWED_EXTENSIONS=".c .cc .java .py .rb"
+readonly ALLOWED_EXTENSIONS=".c .cc .cs .java .py .rb"
 
 readonly TEMP_DIR='/tmp/qfcc'
 readonly OUTPUT_DIFF_PATH="${TEMP_DIR}/output.diff"
@@ -150,13 +150,21 @@ function run_submission() {
         fi
 
         ./a.out < "${input_path}" &> "${output_path}"
+    elif [[ "${submission_extension}" == '.cs' ]] ; then
+        dotnet build --artifacts-path . "${submission_path}" &> "${compile_output_path}"
+        if [[ $? -ne 0 ]] ; then
+            echo "C# compile failed."
+            exit 111
+        fi
+
+        ./bin/debug/solution < "${input_path}" &> "${output_path}"
     elif [[ "${submission_extension}" == '.java' ]] ; then
         mkdir -p "${CLASSPATH_DIR}"
 
         javac -d "${CLASSPATH_DIR}" "${submission_path}" &> "${compile_output_path}"
         if [[ $? -ne 0 ]] ; then
             echo "Java compile failed."
-            exit 111
+            exit 112
         fi
 
         java -cp "${CLASSPATH_DIR}" "${submission_basename}" < "${input_path}" &> "${output_path}"
