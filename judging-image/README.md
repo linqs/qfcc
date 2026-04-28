@@ -98,6 +98,15 @@ Be sure to check their previous submissions as well.
 
 ## Preparations
 
+### Things to Bring
+
+ - USB Drives
+   - Contest Image
+   - Blank (FAT32)
+ - Pens
+ - Scratch Paper
+ - Printed Problem Specifications
+
 ### USB Drives
 
 USB drives will be used for two different activities during the contest:
