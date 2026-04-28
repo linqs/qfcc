@@ -102,7 +102,7 @@ For the love of programming and to improve your skills!
 
  - First: $50
  - Second: $25
- - Third: $15
+ - Third: $25
 
 ## Update: Results
 
