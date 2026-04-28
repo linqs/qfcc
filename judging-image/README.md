@@ -125,6 +125,18 @@ Any contestant found using any USB but their own should be disqualified.
 
 We recommend formatting USBs as [FAT32 (vFAT)](https://en.wikipedia.org/wiki/File_Allocation_Table#FAT32) for portability.
 
+### Printing Specs
+
+When printing problem specifications, it can be useful to convert it to a PDF first.
+
+One option is to use [Pandoc](https://en.wikipedia.org/wiki/Pandoc):
+```sh
+pandoc --from markdown --standalone --output spec.pdf spec.md
+```
+
+Another option is to use an online Markdown converter and print from there, like [Online Markdown](https://onlinemarkdown.com/).
+But, you will probably need to edit the images to point to the raw images on github.
+
 ## Security Notes
 
 Below are some potential security issues and what you can do to mitigate them.

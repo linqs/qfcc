@@ -2,6 +2,11 @@
 
 This document gives some general hints for contestants.
 
+## Test Cases
+
+The names of test cases are visible from the run output returned to you.
+These names may help give you some context for the test case.
+
 ## Reading All Lines from stdin
 
 A common necessity in QFCC events is the need to read a line from [stdin](https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)).

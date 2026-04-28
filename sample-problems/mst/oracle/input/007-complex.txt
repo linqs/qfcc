@@ -1,0 +1,11 @@
+I	6	H
+A	1	B
+F	300	C
+E	100	C
+C	200	F
+B	3	C
+G	8	F
+C	4	D
+H	70	G
+A	2	B
+D	5	I

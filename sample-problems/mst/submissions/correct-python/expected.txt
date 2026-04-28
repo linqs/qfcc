@@ -1,0 +1,34 @@
+Running test case: '001-single-edge'.
+Test case '001-single-edge' passed.
+
+Running test case: '002-simple-graph'.
+Test case '002-simple-graph' passed.
+
+Running test case: '003-multiple-msts'.
+Test case '003-multiple-msts' passed.
+
+Running test case: '004-chain'.
+Test case '004-chain' passed.
+
+Running test case: '005-multiple-edges'.
+Test case '005-multiple-edges' passed.
+
+Running test case: '006-duplicate-edges'.
+Test case '006-duplicate-edges' passed.
+
+Running test case: '007-complex'.
+Test case '007-complex' passed.
+
+Running test case: '008-school-example'.
+Test case '008-school-example' passed.
+
+Running test case: '009-wiki-example'.
+Test case '009-wiki-example' passed.
+
+Running test case: '010-empty-lines'.
+Test case '010-empty-lines' passed.
+
+Running test case: '011-trim-whitespace'.
+Test case '011-trim-whitespace' passed.
+
+Passed all test cases!
