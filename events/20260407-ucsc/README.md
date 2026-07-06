@@ -10,7 +10,7 @@ E2-180
 </div>
 
 The [LINQS lab](https://linqs.org) and [UCSC's Open Source Programs Office (OSPO)](https://ucsc-ospo.github.io/)
-are hosting a "qualify first" coding contest.
+are hosting a "quality first" coding contest.
 See this repo's [README](../../README.md) for more details about this type of contest and the resources used.
 
 If you want to compete,
